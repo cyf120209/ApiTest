@@ -244,6 +244,7 @@ public class Draper {
     public static DraperInformation sendAnnounceDraperInformation( RemoteDevice peer) throws BACnetException {
         SequenceOf<Primitive> listParam= new SequenceOf<Primitive>();
         listParam.add(deviceid);
+        listParam.add(new Unsigned8(0));
 //        dev.sendGlobalBroadcast(new UnconfirmedPrivateTransferRequest(vendorID,announce,listParam));
 //        dev.send(peer,new ConfirmedPrivateTransferRequest(vendorID, announceDraperInformation, listParam));
         AcknowledgementService send = dev.send(peer,new ConfirmedPrivateTransferRequest(vendorID, announceDraperInformation, listParam));
