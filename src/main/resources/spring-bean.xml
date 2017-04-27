@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="initService" class="com.spring.service.InitService">
+    </bean>
+
+    <bean id="shadeService" class="com.spring.service.ShadesService">
+    </bean>
+
+    <bean id="groupService" class="com.spring.service.GroupService">
+    </bean>
+</beans>
