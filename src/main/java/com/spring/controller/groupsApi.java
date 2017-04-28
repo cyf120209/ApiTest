@@ -1,6 +1,5 @@
 package com.spring.controller;
 
-import com.spring.bean.Result;
 import com.spring.service.GroupService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,16 +28,14 @@ public class groupsApi {
     @ApiOperation(value = "move",notes = "move",httpMethod = "POST",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @RequestMapping(value = "/move",method = RequestMethod.POST,produces ={"application/json;charset=UTF-8"})
-    public Result<String> operator(){
+    public String operator(){
         return null;
     }
 
     @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @RequestMapping(value = "",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
-    public Result<Map<Integer,Map<Integer,List<Integer>>>> getMap(){
-        Result<Map<Integer,Map<Integer,List<Integer>>>> result = new Result<>();
-        result.setData(groupService.getMap());
-        return result;
+    public Map<Integer,Map<Integer,List<Integer>>> getMap(){
+        return groupService.getMap();
     }
 }

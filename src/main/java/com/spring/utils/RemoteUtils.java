@@ -55,6 +55,7 @@ public class RemoteUtils {
      * @param remoteDevice
      */
     public synchronized void addRemoteDevice(RemoteDevice remoteDevice){
+        String remoteDeviceName = remoteDevice.getName();
         String modelName = readModelName(remoteDevice);
         remoteDevice.setModelName(modelName);
         mRemoteDeviceIDList.add(remoteDevice.getInstanceNumber());

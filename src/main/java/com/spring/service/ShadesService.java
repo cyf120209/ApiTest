@@ -46,7 +46,8 @@ public class ShadesService {
         return draperList;
     }
 
-    public Shade getShadeInfo(Integer id){
+    public List<Shade> getShadeInfo(Integer id,String name){
+        List<Shade> shadeList=new LinkedList<>();
         RemoteUtils remoteUtils = MyLocalDevice.remoteUtils;
         Map<Integer, RemoteDevice> remoteDeviceMap = remoteUtils.getRemoteDeviceMap();
         try {
@@ -56,14 +57,15 @@ public class ShadesService {
                     .setName("")
                     .setPosition(draperInformation.getCurPosition().intValue())
                     .create();
-            return shade;
+            shadeList.add(shade);
+            return shadeList;
         } catch (BACnetException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public void operation(DraperEntity draperEntity){
+    public void move(DraperEntity draperEntity){
         RemoteUtils remoteUtils = MyLocalDevice.remoteUtils;
         Map<Integer, RemoteDevice> remoteDeviceMap = remoteUtils.getRemoteDeviceMap();
         RemoteDevice remoteDevice = remoteDeviceMap.get(draperEntity.getDraperID());
