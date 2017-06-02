@@ -3,28 +3,40 @@ package com.spring.bean;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by lenovo on 2017/4/20.
  */
+@Entity(name = "shade")
 @ApiModel(value = "shade" ,description = "shade")
 public class Shade implements Serializable{
 
-    @ApiModelProperty(value = "shadId",required = true)
-    private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private int id;
 
+    @Column(name = "shadeId")
+    @ApiModelProperty(value = "shadeId",required = true)
+    private Integer shadeId;
+
+    @Column(name = "shadeName",length = 50)
     @ApiModelProperty(value = "shadeName")
-    private String name;
+    private String shadeName;
 
+    @Column(name = "shadePosition")
     @ApiModelProperty(value = "shadePosition")
-    private Integer position;
+    private Integer shadePosition;
 
+    @Column(name = "shadePriority")
     @ApiModelProperty(value = "shadePriority")
-    private Integer priority;
+    private Integer shadePriority;
 
+    @Column(name = "shadeStatus",length = 50)
     @ApiModelProperty(value = "shadeStatus")
-    private String status;
+    private String shadeStatus;
 
     public Shade() {
     }
@@ -33,52 +45,60 @@ public class Shade implements Serializable{
         this.id = id;
     }
 
-    public Shade(Integer id, String name, Integer position, Integer priority, String status) {
-        this.id = id;
-        this.name = name;
-        this.position = position;
-        this.priority = priority;
-        this.status = status;
+    public Shade(Integer shadeId, String name, Integer position, Integer priority, String status) {
+        this.shadeId = shadeId;
+        this.shadeName = name;
+        this.shadePosition = position;
+        this.shadePriority = priority;
+        this.shadeStatus = status;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getShadeId() {
+        return shadeId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setShadeId(Integer shadeId) {
+        this.shadeId = shadeId;
     }
 
-    public Integer getPosition() {
-        return position;
+    public String getShadeName() {
+        return shadeName;
     }
 
-    public void setPosition(Integer position) {
-        this.position = position;
+    public void setShadeName(String shadeName) {
+        this.shadeName = shadeName;
     }
 
-    public Integer getPriority() {
-        return priority;
+    public Integer getShadePosition() {
+        return shadePosition;
     }
 
-    public void setPriority(Integer priority) {
-        this.priority = priority;
+    public void setShadePosition(Integer shadePosition) {
+        this.shadePosition = shadePosition;
     }
 
-    public String getStatus() {
-        return status;
+    public Integer getShadePriority() {
+        return shadePriority;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setShadePriority(Integer shadePriority) {
+        this.shadePriority = shadePriority;
+    }
+
+    public String getShadeStatus() {
+        return shadeStatus;
+    }
+
+    public void setShadeStatus(String shadeStatus) {
+        this.shadeStatus = shadeStatus;
     }
 
     public static class Build{

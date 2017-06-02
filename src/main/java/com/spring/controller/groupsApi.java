@@ -1,13 +1,13 @@
 package com.spring.controller;
 
+import com.spring.bean.Shade;
+import com.spring.bean.ShadeGroup;
 import com.spring.service.GroupService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -35,7 +35,22 @@ public class groupsApi {
     @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @RequestMapping(value = "",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
-    public Map<Integer,Map<Integer,List<Integer>>> getMap(){
-        return groupService.getMap();
+    public List<ShadeGroup> getGroup(){
+        return groupService.getGroup();
+    }
+
+    @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "group/{groupId}",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
+    public List<Shade> getGroup(@PathVariable Integer groupId){
+        List<Shade> group = groupService.getGroup(groupId);
+        return group;
+    }
+
+    @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "groupShadeMap",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
+    public Map<Integer,List<Shade>> getGroupShadeMap(){
+        return groupService.getGroupShadeMap();
     }
 }

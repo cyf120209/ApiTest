@@ -5,6 +5,7 @@ import com.serotonin.bacnet4j.RemoteDevice;
 import com.serotonin.bacnet4j.service.acknowledgement.ReadPropertyAck;
 import com.serotonin.bacnet4j.service.confirmed.ReadPropertyRequest;
 import com.serotonin.bacnet4j.type.enumerated.PropertyIdentifier;
+import com.spring.bean.Shade;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +37,8 @@ public class RemoteUtils {
      */
     private Map<Integer, Map<Integer, List<Integer>>> mMap=new HashMap<Integer, Map<Integer, List<Integer>>>();
 
+    private Map<Integer,Shade> mShadeMap=new HashMap<>();
+
     private static Object lock=new Object();
     public RemoteUtils() {
     }
@@ -55,12 +58,14 @@ public class RemoteUtils {
      * @param remoteDevice
      */
     public synchronized void addRemoteDevice(RemoteDevice remoteDevice){
-        String remoteDeviceName = remoteDevice.getName();
-        String modelName = readModelName(remoteDevice);
-        remoteDevice.setModelName(modelName);
+//        String remoteDeviceName = remoteDevice.getName();
+//        String modelName = readModelName(remoteDevice);
+//        remoteDevice.setModelName(modelName);
         mRemoteDeviceIDList.add(remoteDevice.getInstanceNumber());
         mRemoteDeviceList.add(remoteDevice);
         mRemoteDevice.put(remoteDevice.getInstanceNumber(),remoteDevice);
+        Shade shade = new Shade(remoteDevice.getInstanceNumber(), remoteDevice.getName(), 1, 1, "1");
+        mShadeMap.put(remoteDevice.getInstanceNumber(),shade);
     }
 
     /**
@@ -110,6 +115,10 @@ public class RemoteUtils {
      */
     public Map<Integer, RemoteDevice> getRemoteDeviceMap() {
         return mRemoteDevice;
+    }
+
+    public Map<Integer, Shade> getShadeMap() {
+        return mShadeMap;
     }
 
     /**

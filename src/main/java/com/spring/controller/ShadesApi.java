@@ -2,6 +2,8 @@ package com.spring.controller;
 
 import com.spring.bean.Shade;
 import com.spring.bean.ShadesMove;
+import com.spring.service.ShadeCache;
+import com.spring.service.ShadeReal;
 import com.spring.service.ShadesService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +45,8 @@ public class ShadesApi {
     @RequestMapping(value = "",method = RequestMethod.GET,produces = {"application/json;charset=UTF-8"})
     public List<Shade> getShadeInfo(@RequestParam(value = "id",required = false) Integer[] id,
                               @RequestParam(value = "name",required = false) String name){
-        List<Shade> shadeList = shadesService.getShadeInfo(id[0], name);
+//        shadesService.setIShadeDao(new ShadeReal());
+        List<Shade> shadeList = shadesService.getShadeList();
         return shadeList;
     }
 

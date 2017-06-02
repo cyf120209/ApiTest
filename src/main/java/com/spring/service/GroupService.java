@@ -8,29 +8,55 @@ import com.serotonin.bacnet4j.type.primitive.ObjectIdentifier;
 import com.serotonin.bacnet4j.type.primitive.UnsignedInteger;
 import com.spring.bean.AddGroupEntity;
 import com.spring.bean.GroupEntity;
+import com.spring.bean.Shade;
+import com.spring.bean.ShadeGroup;
+import com.spring.dao.GroupDao;
 import com.spring.model.DraperSubItem;
 import com.spring.model.DraperSubList;
 import com.spring.utils.Draper;
 import com.spring.utils.MyLocalDevice;
 import com.spring.utils.RemoteUtils;
 import com.spring.utils.RxBus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rx.Subscription;
 import rx.functions.Action1;
 
+import javax.annotation.Resource;
 import java.util.*;
 
 /**
  * Created by lenovo on 2017/3/23.
  */
+@Service
 public class GroupService {
+
+    @Resource
+    private GroupDao groupDao;
+
+    public GroupDao getGroupDao() {
+        return groupDao;
+    }
+
+    public void setGroupDao(GroupDao groupDao) {
+        this.groupDao = groupDao;
+    }
 
     /**
      * 获取map关系列表
      * @return
      */
-    public Map<Integer, Map<Integer, List<Integer>>> getMap(){
-        RemoteUtils remoteUtils = MyLocalDevice.remoteUtils;
-        return remoteUtils.getMap();
+    @Transactional
+    public List<ShadeGroup> getGroup(){
+        return groupDao.getGroupList();
+    }
+
+    public List<Shade> getGroup(Integer groupId){
+        return groupDao.getGroup(groupId);
+    }
+
+    public Map<Integer,List<Shade>> getGroupShadeMap(){
+        return groupDao.getGroupShadeMap();
     }
 
     /**
@@ -44,6 +70,8 @@ public class GroupService {
             e.printStackTrace();
         }
     }
+
+
 
     /**
      * 添加组
