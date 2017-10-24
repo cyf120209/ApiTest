@@ -32,6 +32,7 @@ public class ShadeDao implements IShadeDao{
         String sql=buffer.toString();
         Session currentSession = sessionFactory.openSession();
         Query query = currentSession.createQuery(sql);
-        return query.list();
+        List list = query.list();
+        return list;
     }
 }
