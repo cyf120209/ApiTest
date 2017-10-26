@@ -7,16 +7,16 @@
     </bean>
 
     <bean id="groupDao" class="com.spring.dao.GroupDao">
-        <property name="session" ref="sessionFactory"></property>
+
     </bean>
     <bean id="groupService" class="com.spring.service.GroupService">
-        <property name="groupDao" ref="groupDao"></property>
+
     </bean>
 
     <bean id="shadeDao" class="com.spring.dao.ShadeDao">
-        <property name="sessionFactory" ref="sessionFactory"></property>
+
     </bean>
     <bean id="shadeService" class="com.spring.service.ShadesService">
-        <property name="shadeDao" ref="shadeDao"></property>
+
     </bean>
 </beans>

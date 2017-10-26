@@ -15,9 +15,8 @@ import java.util.*;
 /**
  * Created by lenovo on 2017/5/3.
  */
-public class ShadeCache implements IShadeDao {
+public class ShadeCache{
 
-    @Override
     public List<Shade> getShadeList(List<Integer> idList,List<String> nameList,Integer priotity,String status) {
         RemoteUtils remoteUtils = MyLocalDevice.remoteUtils;
         List<Shade> draperList=new ArrayList<>();
@@ -36,7 +35,7 @@ public class ShadeCache implements IShadeDao {
                         if(idList==null || idList.size()==0){
                             return true;
                         }else {
-                            return idList.contains(shade.getId());
+                            return idList.contains(shade.getShadeId());
                         }
                     }
                 })

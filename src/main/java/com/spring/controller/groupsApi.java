@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,21 +37,22 @@ public class groupsApi {
     @ResponseBody
     @RequestMapping(value = "",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
     public List<ShadeGroup> getGroup(){
-        return groupService.getGroup();
+        return new ArrayList<>();
     }
 
     @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @RequestMapping(value = "group/{groupId}",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
     public List<Shade> getGroup(@PathVariable Integer groupId){
-        List<Shade> group = groupService.getGroup(groupId);
-        return group;
+//        List<Shade> group = groupService.getGroup(groupId);
+        return new ArrayList<>();
     }
 
     @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @RequestMapping(value = "groupShadeMap",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
     public Map<Integer,List<Shade>> getGroupShadeMap(){
-        return groupService.getGroupShadeMap();
+//        return groupService.getGroupShadeMap();
+        return new HashMap<>();
     }
 }

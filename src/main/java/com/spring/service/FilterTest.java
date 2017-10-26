@@ -36,8 +36,8 @@ public class FilterTest {
                 .filter(new Func1<Shade, Boolean>() {
                     @Override
                     public Boolean call(Shade shade) {
-                        System.out.println("integerList"+shade.getId());
-                        return integerList.contains(shade.getId());
+                        System.out.println("integerList"+shade.getShadeId());
+                        return integerList.contains(shade.getShadeId());
                     }
                 })
                 .filter(new Func1<Shade, Boolean>() {
@@ -48,14 +48,14 @@ public class FilterTest {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        System.out.println("stringList"+shade.getId());
+                        System.out.println("stringList"+shade.getShadeId());
                         return stringList.contains(shade.getShadeName());
                     }
                 })
                 .subscribe(new Action1<Shade>() {
                     @Override
                     public void call(Shade shade) {
-                        System.out.println(shade.getId());
+                        System.out.println(shade.getShadeId());
                     }
                 });
 //        System.out.println(shadeList.size());

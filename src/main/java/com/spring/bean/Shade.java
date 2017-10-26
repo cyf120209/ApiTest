@@ -3,47 +3,32 @@ package com.spring.bean;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by lenovo on 2017/4/20.
  */
-@Entity(name = "shade")
 @ApiModel(value = "shade" ,description = "shade")
 public class Shade implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private int id;
-
-    @Column(name = "shadeId")
     @ApiModelProperty(value = "shadeId",required = true)
     private Integer shadeId;
 
-    @Column(name = "shadeName",length = 50)
     @ApiModelProperty(value = "shadeName")
     private String shadeName;
 
-    @Column(name = "shadePosition")
     @ApiModelProperty(value = "shadePosition")
     private Integer shadePosition;
 
-    @Column(name = "shadePriority")
     @ApiModelProperty(value = "shadePriority")
     private Integer shadePriority;
 
-    @Column(name = "shadeStatus",length = 50)
     @ApiModelProperty(value = "shadeStatus")
     private String shadeStatus;
 
     public Shade() {
     }
 
-    public Shade(Integer id) {
-        this.id = id;
-    }
 
     public Shade(Integer shadeId, String name, Integer position, Integer priority, String status) {
         this.shadeId = shadeId;
@@ -53,13 +38,6 @@ public class Shade implements Serializable{
         this.shadeStatus = status;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Integer getShadeId() {
         return shadeId;

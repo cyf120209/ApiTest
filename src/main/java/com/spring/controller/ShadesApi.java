@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,8 +47,8 @@ public class ShadesApi {
     public List<Shade> getShadeInfo(@RequestParam(value = "id",required = false) Integer[] id,
                               @RequestParam(value = "name",required = false) String name){
 //        shadesService.setIShadeDao(new ShadeReal());
-        List<Shade> shadeList = shadesService.getShadeList();
-        return shadeList;
+//        List<Shade> shadeList = shadesService.getShadeList();
+        return new ArrayList<>();
     }
 
 }

@@ -31,33 +31,33 @@ import java.util.*;
 @Service
 public class GroupService {
 
-    @Resource
-    private GroupDao groupDao;
+//    @Resource
+//    private GroupDao groupDao;
 
-    public GroupDao getGroupDao() {
-        return groupDao;
-    }
+//    public GroupDao getGroupDao() {
+//        return groupDao;
+//    }
 
-    public void setGroupDao(GroupDao groupDao) {
-        this.groupDao = groupDao;
-    }
+//    public void setGroupDao(GroupDao groupDao) {
+//        this.groupDao = groupDao;
+//    }
 
     /**
      * 获取map关系列表
      * @return
      */
     @Transactional
-    public List<ShadeGroup> getGroup(){
-        return groupDao.getGroupList();
-    }
+//    public List<ShadeGroup> getGroup(){
+//        return groupDao.getGroupList();
+//    }
 
-    public List<Shade> getGroup(Integer groupId){
-        return groupDao.getGroup(groupId);
-    }
+//    public List<Shade> getGroup(Integer groupId){
+//        return groupDao.getGroup(groupId);
+//    }
 
-    public Map<Integer,List<Shade>> getGroupShadeMap(){
-        return groupDao.getGroupShadeMap();
-    }
+//    public Map<Integer,List<Shade>> getGroupShadeMap(){
+//        return groupDao.getGroupShadeMap();
+//    }
 
     /**
      * 组的基本操作

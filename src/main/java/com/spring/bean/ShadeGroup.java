@@ -3,30 +3,22 @@ package com.spring.bean;
 import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.*;
 
 /**
  * Created by lenovo on 2017/4/22.
  */
-@Entity(name = "shadegroup")
 @ApiModel(value = "group")
 public class ShadeGroup {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
     @ApiModelProperty(value = "groupId")
     private Integer id;
 
-    @Column(name = "groupId")
     @ApiModelProperty(value = "groupId")
     private Integer groupId;
 
-    @Column(name = "deviceId")
     @ApiModelProperty(value = "deviceId")
     private Integer deviceId;
 
-    @Column(name = "groupName",length = 50)
     @ApiModelProperty(value = "groupName")
     private String groupName;
 

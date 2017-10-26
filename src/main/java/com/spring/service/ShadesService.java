@@ -24,24 +24,24 @@ public class ShadesService {
 //        this.IShadeDao = IShadeDao;
 //    }
 
-    private ShadeDao shadeDao;
+//    private ShadeDao shadeDao;
+//
+//    public ShadeDao getShadeDao() {
+//        return shadeDao;
+//    }
 
-    public ShadeDao getShadeDao() {
-        return shadeDao;
-    }
-
-    public void setShadeDao(ShadeDao shadeDao) {
-        this.shadeDao = shadeDao;
-    }
+//    public void setShadeDao(ShadeDao shadeDao) {
+//        this.shadeDao = shadeDao;
+//    }
 
     /**
      * 获取电机列表
      * @return
      */
-    @Transactional
-    public List<Shade> getShadeList(){
-        return shadeDao.getShadeList(null,null,null,null);
-    }
+//    @Transactional
+//    public List<Shade> getShadeList(){
+//        return shadeDao.getShadeList(null,null,null,null);
+//    }
 
     /**
      * 移动操作
