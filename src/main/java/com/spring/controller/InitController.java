@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping(value = "/init")
 public class InitController {
 
-    @Resource(name = "initService")
+//    @Resource(name = "initService")
     private InitService service;
 
     /**

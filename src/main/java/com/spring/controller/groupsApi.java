@@ -23,7 +23,7 @@ import java.util.Map;
 @RequestMapping(value = "/groups")
 public class groupsApi {
 
-    @Resource(name = "groupService")
+//    @Resource(name = "groupService")
     private GroupService groupService;
 
     @ApiOperation(value = "move",notes = "move",httpMethod = "POST",produces = MediaType.APPLICATION_JSON_VALUE)

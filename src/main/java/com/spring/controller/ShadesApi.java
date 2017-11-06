@@ -23,7 +23,7 @@ import java.util.List;
 @RequestMapping(value = "/shades")
 public class ShadesApi {
 
-    @Resource(name = "shadeService")
+//    @Resource(name = "shadeService")
     private ShadesService shadesService;
 
     @ApiOperation(value = "Moves shades",notes = "Moves shades",httpMethod = "POST",produces = MediaType.APPLICATION_JSON_VALUE)
