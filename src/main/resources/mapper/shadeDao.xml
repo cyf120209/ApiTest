@@ -8,10 +8,12 @@
         <!-- 具体的sql -->
         SELECT
         shadeId,
-        name,
-        number
+        shadeName,
+        shadePosition,
+        shadePriority,
+        shadeStatus
         FROM
-        book
+        shade
         WHERE
         shadeId = #{shadeId}
     </select>

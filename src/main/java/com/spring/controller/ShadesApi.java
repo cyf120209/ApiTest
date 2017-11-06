@@ -2,11 +2,13 @@ package com.spring.controller;
 
 import com.spring.bean.Shade;
 import com.spring.bean.ShadesMove;
+import com.spring.dao.IShadeDao;
 import com.spring.service.ShadeCache;
 import com.spring.service.ShadeReal;
 import com.spring.service.ShadesService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +27,9 @@ public class ShadesApi {
 
 //    @Resource(name = "shadeService")
     private ShadesService shadesService;
+
+    @Autowired
+    private IShadeDao shadeDao;
 
     @ApiOperation(value = "Moves shades",notes = "Moves shades",httpMethod = "POST",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -48,6 +53,7 @@ public class ShadesApi {
                               @RequestParam(value = "name",required = false) String name){
 //        shadesService.setIShadeDao(new ShadeReal());
 //        List<Shade> shadeList = shadesService.getShadeList();
+        shadeDao.queryById(10001);
         return new ArrayList<>();
     }
 
