@@ -1,19 +1,16 @@
 package com.spring.controller;
 
-import com.spring.bean.Shade;
 import com.spring.bean.ShadeGroup;
-import com.spring.service.GroupService;
+import com.spring.service.IGroupService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by lenovo on 2017/4/20.
@@ -23,13 +20,13 @@ import java.util.Map;
 @RequestMapping(value = "/groups")
 public class groupsApi {
 
-//    @Resource(name = "groupService")
-    private GroupService groupService;
+    @Autowired
+    private IGroupService groupService;
 
     @ApiOperation(value = "move",notes = "move",httpMethod = "POST",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @RequestMapping(value = "/move",method = RequestMethod.POST,produces ={"application/json;charset=UTF-8"})
-    public String operator(){
+    public String operator(@ApiParam(value = "端口号", required = true) @RequestParam String operator){
         return null;
     }
 
@@ -37,22 +34,21 @@ public class groupsApi {
     @ResponseBody
     @RequestMapping(value = "",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
     public List<ShadeGroup> getGroup(){
-        return new ArrayList<>();
+        return groupService.getAll();
     }
 
     @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    @RequestMapping(value = "group/{groupId}",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
-    public List<Shade> getGroup(@PathVariable Integer groupId){
-//        List<Shade> group = groupService.getGroup(groupId);
-        return new ArrayList<>();
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
+    public ShadeGroup getGroup(@PathVariable Integer id){
+        return groupService.getById(id);
     }
 
-    @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    @RequestMapping(value = "groupShadeMap",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
-    public Map<Integer,List<Shade>> getGroupShadeMap(){
-//        return groupService.getGroupShadeMap();
-        return new HashMap<>();
-    }
+//    @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    @RequestMapping(value = "groupShadeMap",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
+//    public Map<Integer,List<Shade>> getGroupShadeMap(){
+////        return groupService.getGroupShadeMap();
+//        return new HashMap<>();
+//    }
 }

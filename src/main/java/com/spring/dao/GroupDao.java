@@ -1,11 +1,5 @@
 package com.spring.dao;
 
-import com.spring.bean.Shade;
-import com.spring.bean.ShadeGroup;
-import com.spring.service.IShadeDao;
-
-import java.util.*;
-
 /**
  * Created by lenovo on 2017/5/15.
  */

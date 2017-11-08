@@ -11,7 +11,7 @@ import java.util.List;
 public interface IShadeDao {
 
     /**
-     * 通过ID查询单本图书
+     * 通过ID查询电机单台电机
      *
      * @param id
      * @return
@@ -19,19 +19,13 @@ public interface IShadeDao {
     Shade queryById(Integer id);
 
     /**
-     * 查询所有图书
+     * 查询所有
      *
      * @param offset 查询起始位置
      * @param limit 查询条数
      * @return
      */
-    List<Shade> queryAll(@Param("offset") int offset, @Param("limit") int limit);
+    List<Shade> queryAll();
+//    List<Shade> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 
-    /**
-     * 减少馆藏数量
-     *
-     * @param bookId
-     * @return 如果影响行数等于>1，表示更新的记录行数
-     */
-    int reduceNumber(long bookId);
 }

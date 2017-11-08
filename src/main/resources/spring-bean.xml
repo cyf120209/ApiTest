@@ -9,14 +9,14 @@
     <bean id="groupDao" class="com.spring.dao.GroupDao">
 
     </bean>
-    <bean id="groupService" class="com.spring.service.GroupService">
+    <bean id="groupService" class="com.spring.service.GroupServiceImpl">
 
     </bean>
 
     <bean id="shadeDao" class="com.spring.dao.ShadeDao">
 
     </bean>
-    <bean id="shadeService" class="com.spring.service.ShadesService">
+    <bean id="shadeService" class="com.spring.service.ShadeServiceImpl">
 
     </bean>
 </beans>
