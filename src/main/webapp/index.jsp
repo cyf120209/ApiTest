@@ -39,7 +39,8 @@
             if (url && url.length > 1) {
                 url = url[1];
             } else {
-                url = "http://localhost:8080"+"<%=request.getContextPath()%>"+"/api-docs";
+                url = "<%=basePath%>"+"api-docs";
+                <%--url = "<%=basePath%>"+"<%=request.getContextPath()%>"+"/api-docs";--%>
             }
             window.swaggerUi = new SwaggerUi({
                 url: url,

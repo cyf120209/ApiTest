@@ -51,10 +51,6 @@ public class ShadeServiceImpl implements IShadeService{
         return null;
     }
 
-    @Override
-    public List<Shade> getShadeList(List<Integer> idList, List<String> nameList, Integer priotity, String status) {
-        return null;
-    }
 
     @Override
     public Shade getById(Integer id) {

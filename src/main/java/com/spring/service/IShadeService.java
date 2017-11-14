@@ -9,8 +9,6 @@ import java.util.List;
  */
 public interface IShadeService {
 
-    List<Shade> getShadeList(List<Integer> idList,List<String> nameList ,Integer priotity,String status);
-
     Shade getById(Integer id);
 
     List<Shade> getAll();
