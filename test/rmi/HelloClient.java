@@ -1,4 +1,4 @@
-package rmi;
+package manager.rmi;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;

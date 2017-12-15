@@ -1,6 +1,7 @@
 package com.spring.service;
 
 import com.spring.bean.Shade;
+import com.spring.bean.ShadeGroup;
 
 import java.util.List;
 
@@ -9,7 +10,9 @@ import java.util.List;
  */
 public interface IShadeService {
 
-    Shade getById(Integer id);
+    List<Shade> getShadeList(Integer[] id,String[] name,Integer priority,String status,Integer pageSize,Integer pageStartIndex);
 
-    List<Shade> getAll();
+    List<Shade> getMoveList(Integer[] id,String[] name,Integer[] groupId,String[] groupName,Integer position,Integer percentage,Integer command,Integer priority);
+
+    List<ShadeGroup> getShadeGroupList(Integer[] id,String[] name);
 }

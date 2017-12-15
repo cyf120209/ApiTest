@@ -8,5 +8,5 @@ public interface IGroupService {
 
     ShadeGroup getById(Integer id);
 
-    List<ShadeGroup> getAll();
+    List<ShadeGroup> getShadeGroupList(Integer[] id,String[] name);
 }

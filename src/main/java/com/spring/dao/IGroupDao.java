@@ -2,6 +2,7 @@ package com.spring.dao;
 
 import com.spring.bean.ShadeGroup;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 public interface IGroupDao {

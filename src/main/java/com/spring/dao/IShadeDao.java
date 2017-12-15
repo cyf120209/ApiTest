@@ -1,7 +1,6 @@
 package com.spring.dao;
 
 import com.spring.bean.Shade;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,8 +20,6 @@ public interface IShadeDao {
     /**
      * 查询所有
      *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
      * @return
      */
     List<Shade> queryAll();

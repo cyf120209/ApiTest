@@ -1,45 +1,31 @@
-package com.spring.bean;
-
-import com.wordnik.swagger.annotations.ApiModel;
-import com.wordnik.swagger.annotations.ApiModelProperty;
+package entity;
 
 import java.io.Serializable;
-
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by lenovo on 2017/4/22.
+ * Created by lenovo on 2017/6/16.
  */
-@ApiModel(value = "group")
 public class ShadeGroup implements Serializable{
 
-    @ApiModelProperty(value = "groupId")
     private Integer id;
 
-    @ApiModelProperty(value = "groupId")
     private Integer groupId;
 
-    @ApiModelProperty(value = "deviceId")
     private Integer deviceId;
 
-    @ApiModelProperty(value = "groupName")
     private String groupName;
 
+    private List<Shade> shades =new ArrayList<Shade>();
+
     public ShadeGroup() {
+        super();
     }
 
-    public ShadeGroup(Integer id, Integer groupId, Integer deviceId, String groupName) {
-        this.id = id;
+    public ShadeGroup(Integer groupId, Integer deviceId) {
         this.groupId = groupId;
         this.deviceId = deviceId;
-        this.groupName = groupName;
-    }
-
-    public Integer getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
     }
 
     public Integer getId() {
@@ -48,6 +34,14 @@ public class ShadeGroup implements Serializable{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
     }
 
     public Integer getDeviceId() {
@@ -64,5 +58,13 @@ public class ShadeGroup implements Serializable{
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;
+    }
+
+    public List<Shade> getShades() {
+        return shades;
+    }
+
+    public void setShades(List<Shade> shades) {
+        this.shades = shades;
     }
 }

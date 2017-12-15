@@ -65,7 +65,7 @@
                     log("Unable to Load SwaggerUI");
                 },
                 docExpansion: "none",
-                sorter : "alpha"
+                sorter : "alpha",
             });
 
             function addApiKeyAuthorization() {

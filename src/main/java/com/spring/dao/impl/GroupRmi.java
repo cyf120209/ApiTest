@@ -1,9 +1,61 @@
-package com.spring.dao;
+package com.spring.dao.impl;
+
+import com.spring.bean.ShadeGroup;
+import com.spring.common.Common;
+import com.spring.dao.IGroupDao;
+import com.spring.utils.Entity2BeanUtils;
+import manager.rmi.IApi;
+import manager.rmi.IGroup;
+
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by lenovo on 2017/5/15.
  */
-public class GroupDao{
+public class GroupRmi implements IGroupDao {
+
+    private static IGroup group;
+
+    static {
+        try {
+            group = (IGroup) Naming.lookup("//"+ Common.HOST_IP+":"+Common.RMI_PORT+"/group");
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public ShadeGroup queryById(Integer id) {
+        try {
+            entity.ShadeGroup group = GroupRmi.group.getByGroupId(id);
+            return Entity2BeanUtils.entity2bean(group);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List<ShadeGroup> queryAll(){
+        List<ShadeGroup> groupList=new ArrayList<>();
+        try {
+            List<entity.ShadeGroup> list = group.getGroupList();
+            groupList.addAll(Entity2BeanUtils.entity2beanGroup(list));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return groupList;
+    }
 
 //    private SessionFactory session;
 //

@@ -6,17 +6,17 @@
     <bean id="initService" class="com.spring.service.InitService">
     </bean>
 
-    <bean id="groupDao" class="com.spring.dao.GroupDao">
+    <bean id="groupRmi" class="com.spring.dao.impl.GroupRmi">
 
     </bean>
-    <bean id="groupService" class="com.spring.service.GroupServiceImpl">
+    <bean id="groupService" class="com.spring.service.impl.GroupServiceImpl">
 
     </bean>
 
     <bean id="shadeDao" class="com.spring.dao.ShadeDao">
 
     </bean>
-    <bean id="shadeService" class="com.spring.service.ShadeServiceImpl">
+    <bean id="shadeService" class="com.spring.service.impl.ShadeServiceImpl">
 
     </bean>
 </beans>
