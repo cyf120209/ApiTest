@@ -4,6 +4,7 @@ import com.spring.bean.Shade;
 import com.spring.common.Common;
 import com.spring.dao.IShadeDao;
 import com.spring.utils.Entity2BeanUtils;
+import manager.rmi.IRmi;
 import manager.rmi.IShade;
 
 import java.net.MalformedURLException;
@@ -13,20 +14,11 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShadeRmi implements IShadeDao {
+public class ShadeRmi extends Rmi<IShade> implements IShadeDao{
 
-    private static IShade shade;
-
-    static {
-        try {
-            shade = (IShade) Naming.lookup("//"+ Common.HOST_IP+":"+Common.RMI_PORT+"/shade");
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+    @Override
+    String getRmiName() {
+        return "shade";
     }
 
     @Override
@@ -39,9 +31,10 @@ public class ShadeRmi implements IShadeDao {
         List<entity.Shade> shadeList = new ArrayList<>();
         List<Shade> list = new ArrayList<>();
         try {
-            shadeList = shade.getShadeList();
+            shadeList = getRmi().getShadeList();
             list = Entity2BeanUtils.entity2beanShade(shadeList);
         } catch (RemoteException e) {
+            resetRmi();
             e.printStackTrace();
         }
         return list;

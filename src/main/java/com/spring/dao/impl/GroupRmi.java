@@ -17,31 +17,21 @@ import java.util.List;
 /**
  * Created by lenovo on 2017/5/15.
  */
-public class GroupRmi implements IGroupDao {
+public class GroupRmi extends Rmi<IGroup> implements IGroupDao {
 
-    private static IGroup group;
-
-    static {
-        try {
-            group = (IGroup) Naming.lookup("//"+ Common.HOST_IP+":"+Common.RMI_PORT+"/group");
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+    @Override
+    String getRmiName() {
+        return "group";
     }
-
 
     @Override
     public ShadeGroup queryById(Integer id) {
-        try {
-            entity.ShadeGroup group = GroupRmi.group.getByGroupId(id);
-            return Entity2BeanUtils.entity2bean(group);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            entity.ShadeGroup group = GroupRmi.group.getByGroupId(id);
+//            return Entity2BeanUtils.entity2bean(group);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
         return null;
     }
 
@@ -49,9 +39,10 @@ public class GroupRmi implements IGroupDao {
     public List<ShadeGroup> queryAll(){
         List<ShadeGroup> groupList=new ArrayList<>();
         try {
-            List<entity.ShadeGroup> list = group.getGroupList();
+            List<entity.ShadeGroup> list = getRmi().getGroupList();
             groupList.addAll(Entity2BeanUtils.entity2beanGroup(list));
         } catch (RemoteException e) {
+            resetRmi();
             e.printStackTrace();
         }
         return groupList;
