@@ -74,6 +74,15 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <filter>
+    <filter-name>AjaxFilter</filter-name>
+    <filter-class>com.spring.utils.AjaxFilter</filter-class>
+    <!-- AjaxFilter 路径为自己类的路径 -->
+  </filter>
+  <filter-mapping>
+    <filter-name>AjaxFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <!--<filter>-->
     <!--<filter-name>SpringOpenSessionInViewFilter</filter-name>-->
     <!--<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>-->
