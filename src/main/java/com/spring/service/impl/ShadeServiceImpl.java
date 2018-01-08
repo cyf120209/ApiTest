@@ -33,7 +33,7 @@ public class ShadeServiceImpl implements IShadeService {
         List<Shade> list = shadeDao.queryAll();
 //        List<Shade> list = iShadeDao.queryAll();
         if(pageSize!=null){
-            list=list.subList((pageStartIndex-1) * pageSize,pageStartIndex * pageSize);
+            list=list.subList((pageStartIndex-1) * pageSize,(list.size()<=(pageStartIndex * pageSize))?(list.size()-1):pageStartIndex * pageSize);
         }
         Observable.from(list)
                 .filter(new Func1<Shade, Boolean>() {
