@@ -1496,7 +1496,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
 
     HeaderView.prototype.showPetStore = function(e) {
       return this.trigger('update-swagger-ui', {
-        url: "http://petstore.swagger.wordnik.com/api/api-docs"
+        url: "http://petstore.com.spring.com.spring.swagger.wordnik.com/api/api-docs"
       });
     };
 
@@ -1592,7 +1592,7 @@ helpers = this.merge(helpers, Handlebars.helpers); data = data || {};
         } else if (this.model.url.indexOf("localhost") > 0) {
           return this.model.validatorUrl = null;
         } else {
-          return this.model.validatorUrl = "http://online.swagger.io/validator";
+          return this.model.validatorUrl = "http://online.com.spring.com.spring.swagger.io/validator";
         }
       }
     };

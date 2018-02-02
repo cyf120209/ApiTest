@@ -44,7 +44,7 @@
             }
             window.swaggerUi = new SwaggerUi({
                 url: url,
-                dom_id: "swagger-ui-container",
+                dom_id: "com.spring.com.spring.swagger-ui-container",
                 supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
                 onComplete: function(swaggerApi, swaggerUi){
                     log("Loaded SwaggerUI");
@@ -96,7 +96,7 @@
 <body class="swagger-section">
 <div id='header'>
     <div class="swagger-ui-wrap">
-        <a id="logo" href="#">后台API接口</a>
+        <a id="logo" href="#">Draper API 接口</a>
         <form id='api_selector'>
             <div class='input'><input placeholder="http://mousycoder.com" id="input_baseUrl" name="baseUrl" type="text"/></div>
             <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
