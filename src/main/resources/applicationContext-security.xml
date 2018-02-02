@@ -21,19 +21,19 @@
 	</http>
 
 
-	<http pattern="/shades**/*" create-session="never"
+	<http pattern="/shades/**" create-session="never"
 		entry-point-ref="oauth2AuthenticationEntryPoint"
 		access-decision-manager-ref="oauth2AccessDecisionManager">
 		<anonymous enabled="false" />
-		<intercept-url pattern="/shades**/*" access="ROLE_USER" />
+		<intercept-url pattern="/shades/**" access="ROLE_USER" />
 		<custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER" />
 		<access-denied-handler ref="oauth2AccessDeniedHandler" />
 	</http>
-	<http pattern="/groups" create-session="never"
+	<http pattern="/groups/**" create-session="never"
 		entry-point-ref="oauth2AuthenticationEntryPoint"
 		access-decision-manager-ref="oauth2AccessDecisionManager">
 		<anonymous enabled="false" />
-		<intercept-url pattern="/groups**/*" access="SCOPE_READ,ROLE_ADMIN" />
+		<intercept-url pattern="/groups/**" access="SCOPE_READ,ROLE_ADMIN" />
 		<custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER" />
 		<access-denied-handler ref="oauth2AccessDeniedHandler" />
 	</http>
@@ -123,8 +123,8 @@
 		</beans:constructor-arg>
 	</beans:bean>
 
-	<beans:bean id="groupsApi" class="com.spring.controller.groupsApi">
-	</beans:bean>
+	<!--<beans:bean id="groupsApi" class="com.spring.controller.groupsApi">-->
+	<!--</beans:bean>-->
 
 
     <!--指定spring要保护的资源，如果没有这个，访问控制的时候会说没有Authentication object：-->
