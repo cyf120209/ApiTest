@@ -29,7 +29,7 @@
 		<custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER" />
 		<access-denied-handler ref="oauth2AccessDeniedHandler" />
 	</http>
-	<http pattern="/groups**/*" create-session="never"
+	<http pattern="/groups" create-session="never"
 		entry-point-ref="oauth2AuthenticationEntryPoint"
 		access-decision-manager-ref="oauth2AccessDecisionManager">
 		<anonymous enabled="false" />
@@ -123,9 +123,8 @@
 		</beans:constructor-arg>
 	</beans:bean>
 
-	<!--<beans:bean id="homeController" class="org.zhangfc.demo4ssh.mvc.HomeController">-->
-
-	<!--</beans:bean>-->
+	<beans:bean id="groupsApi" class="com.spring.controller.groupsApi">
+	</beans:bean>
 
 
     <!--指定spring要保护的资源，如果没有这个，访问控制的时候会说没有Authentication object：-->

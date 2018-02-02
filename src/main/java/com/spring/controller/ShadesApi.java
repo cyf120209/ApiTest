@@ -3,9 +3,9 @@ package com.spring.controller;
 import com.spring.bean.Shade;
 import com.spring.bean.ShadeGroup;
 import com.spring.service.IShadeService;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiParam;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by lenovo on 2017/4/20.
  */
-@Api(value = "shades", description = "", produces = MediaType.APPLICATION_JSON_VALUE)
+@Api(tags = "shades", description = "shades controller", produces = MediaType.APPLICATION_JSON_VALUE)
 @Controller
 @RequestMapping(value = "/shades")
 public class ShadesApi {

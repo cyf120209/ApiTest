@@ -39,12 +39,12 @@
             if (url && url.length > 1) {
                 url = url[1];
             } else {
-                url = "<%=basePath%>"+"api-docs";
+                url = "<%=basePath%>"+"v2/api-docs";
                 <%--url = "<%=basePath%>"+"<%=request.getContextPath()%>"+"/api-docs";--%>
             }
             window.swaggerUi = new SwaggerUi({
                 url: url,
-                dom_id: "com.spring.com.spring.swagger-ui-container",
+                dom_id: "swagger-ui-container",
                 supportedSubmitMethods: ['get', 'post', 'put', 'delete'],
                 onComplete: function(swaggerApi, swaggerUi){
                     log("Loaded SwaggerUI");

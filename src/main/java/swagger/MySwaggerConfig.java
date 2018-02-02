@@ -1,51 +1,39 @@
 package swagger;
 
-import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
-import com.mangofactory.swagger.models.dto.ApiInfo;
-import com.mangofactory.swagger.plugin.EnableSwagger;
-import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
-@EnableSwagger
+@EnableSwagger2
 @EnableWebMvc
+@ComponentScan(basePackages = {"com.spring.controller"})
 public class MySwaggerConfig {
 
-    private SpringSwaggerConfig springSwaggerConfig;
-
-    /**
-     * Required to autowire SpringSwaggerConfig
-     */
-    @Autowired
-    public void setSpringSwaggerConfig(SpringSwaggerConfig springSwaggerConfig) {
-        this.springSwaggerConfig = springSwaggerConfig;
-    }
-
-    /**
-     * Every SwaggerSpringMvcPlugin bean is picked up by the swagger-mvc
-     * framework - allowing for multiple swagger groups i.e. same code base
-     * multiple swagger resource listings.
-     */
     @Bean
-    public SwaggerSpringMvcPlugin customImplementation() {
-        // 暂时不用过滤
-//        return new SwaggerSpringMvcPlugin(this.springSwaggerConfig).apiInfo(apiInfo())
-//                .includePatterns("*.shades.*");
-        return new SwaggerSpringMvcPlugin(this.springSwaggerConfig).apiInfo(apiInfo());
+    public Docket createRestApi() {
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(apiInfo())
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("com.spring.controller"))
+                .paths(PathSelectors.any())
+                .build();
     }
 
     private ApiInfo apiInfo() {
-        ApiInfo apiInfo = new ApiInfo(
-                "Draper",
-                "A REST API to allow integration with the Flex control system",
-                "Draper API terms of service",
-                "Draper API Contact Email",
-                "Draper API Licence Type",
-                "Draper API License URL"
-        );
-        return apiInfo;
+        return new ApiInfoBuilder()
+                .title("Draper")
+                .description("Hello World")
+                .termsOfServiceUrl("http://blog.csdn.net/he90227")
+                .version("1.1")
+                .build();
     }
 }

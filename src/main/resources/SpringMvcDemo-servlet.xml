@@ -12,10 +12,9 @@
 
     <mvc:annotation-driven></mvc:annotation-driven>
 
-    <mvc:resources mapping="/com.spring.swagger/**" location="/WEB-INF/"/>
+    <!--<mvc:resources mapping="/com.spring.swagger/**" location="/WEB-INF/"/>-->
 
-    <bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
-    <!--<bean class="swagger.MySwaggerConfig" />-->
+    <bean class="swagger.MySwaggerConfig" />
 
     <!-- 定义视图解析器 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
