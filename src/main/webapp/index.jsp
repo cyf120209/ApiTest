@@ -102,9 +102,14 @@
             <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
             <div class='input'><a id="explore" href="#">Explore</a></div>
         </form>
+        <%--<form id='oauth' action="">--%>
+            <%--<div class='input'><input placeholder="username" id="input_username" name="baseUrl" type="text"/></div>--%>
+            <%--<div class='input'><input placeholder="password" id="input_password" name="apiKey" type="text"/></div>--%>
+            <%--<button class='input'><a id="submit" >Login in</a></button>--%>
+        <%--</form>--%>
     </div>
 </div>
-
+<a href="admin" target="_blank">Explore</a>
 <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>
