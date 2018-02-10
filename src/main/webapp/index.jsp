@@ -39,7 +39,7 @@
             if (url && url.length > 1) {
                 url = url[1];
             } else {
-                url = "<%=basePath%>"+"api-docs";
+                url = "<%=basePath%>"+"v2/api-docs";
                 <%--url = "<%=basePath%>"+"<%=request.getContextPath()%>"+"/api-docs";--%>
             }
             window.swaggerUi = new SwaggerUi({
@@ -96,15 +96,20 @@
 <body class="swagger-section">
 <div id='header'>
     <div class="swagger-ui-wrap">
-        <a id="logo" href="#">后台API接口</a>
+        <a id="logo" href="#">Draper API 接口</a>
         <form id='api_selector'>
             <div class='input'><input placeholder="http://mousycoder.com" id="input_baseUrl" name="baseUrl" type="text"/></div>
             <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
             <div class='input'><a id="explore" href="#">Explore</a></div>
         </form>
+        <%--<form id='oauth' action="">--%>
+            <%--<div class='input'><input placeholder="username" id="input_username" name="baseUrl" type="text"/></div>--%>
+            <%--<div class='input'><input placeholder="password" id="input_password" name="apiKey" type="text"/></div>--%>
+            <%--<button class='input'><a id="submit" >Login in</a></button>--%>
+        <%--</form>--%>
     </div>
 </div>
-
+<a href="admin" target="_blank">Explore</a>
 <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
 </body>

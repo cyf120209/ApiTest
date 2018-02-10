@@ -3,8 +3,8 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="initService" class="com.spring.service.InitService">
-    </bean>
+    <!--<bean id="initService" class="com.spring.service.InitService">-->
+    <!--</bean>-->
 
     <bean id="groupRmi" class="com.spring.dao.impl.GroupRmi">
 
@@ -13,9 +13,9 @@
 
     </bean>
 
-    <bean id="shadeDao" class="com.spring.dao.ShadeDao">
+    <!--<bean id="shadeDao" class="com.spring.dao.IShadeDao">-->
 
-    </bean>
+    <!--</bean>-->
     <bean id="shadeService" class="com.spring.service.impl.ShadeServiceImpl">
 
     </bean>
