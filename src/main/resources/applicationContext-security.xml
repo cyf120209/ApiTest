@@ -23,22 +23,22 @@
     </http>
 
 
-    <http pattern="/shades/**" create-session="never"
-          entry-point-ref="oauth2AuthenticationEntryPoint"
-          access-decision-manager-ref="oauth2AccessDecisionManager">
-        <anonymous enabled="false"/>
-        <intercept-url pattern="/shades/**" access="ROLE_USER"/>
-        <custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER"/>
-        <access-denied-handler ref="oauth2AccessDeniedHandler"/>
-    </http>
-    <http pattern="/groups/**" create-session="never"
-          entry-point-ref="oauth2AuthenticationEntryPoint"
-          access-decision-manager-ref="oauth2AccessDecisionManager">
-        <anonymous enabled="false"/>
-        <intercept-url pattern="/groups/**" access="SCOPE_READ,ROLE_ADMIN"/>
-        <custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER"/>
-        <access-denied-handler ref="oauth2AccessDeniedHandler"/>
-    </http>
+    <!--<http pattern="/shades/**" create-session="never"-->
+          <!--entry-point-ref="oauth2AuthenticationEntryPoint"-->
+          <!--access-decision-manager-ref="oauth2AccessDecisionManager">-->
+        <!--<anonymous enabled="false"/>-->
+        <!--<intercept-url pattern="/shades/**" access="ROLE_USER"/>-->
+        <!--<custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER"/>-->
+        <!--<access-denied-handler ref="oauth2AccessDeniedHandler"/>-->
+    <!--</http>-->
+    <!--<http pattern="/groups/**" create-session="never"-->
+          <!--entry-point-ref="oauth2AuthenticationEntryPoint"-->
+          <!--access-decision-manager-ref="oauth2AccessDecisionManager">-->
+        <!--<anonymous enabled="false"/>-->
+        <!--<intercept-url pattern="/groups/**" access="SCOPE_READ,ROLE_ADMIN"/>-->
+        <!--<custom-filter ref="mobileResourceServer" before="PRE_AUTH_FILTER"/>-->
+        <!--<access-denied-handler ref="oauth2AccessDeniedHandler"/>-->
+    <!--</http>-->
     <http auto-config="true">
         <intercept-url pattern="/admin**" access="ROLE_USER" />
         <form-login login-page="/login"
