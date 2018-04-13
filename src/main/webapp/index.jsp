@@ -23,6 +23,7 @@
     <script src='lib/jquery.slideto.min.js' type='text/javascript'></script>
     <script src='lib/jquery.wiggle.min.js' type='text/javascript'></script>
     <script src='lib/jquery.ba-bbq.min.js' type='text/javascript'></script>
+    <script src='lib/jquery.form.js' type='text/javascript'></script>
     <script src='lib/handlebars-1.0.0.js' type='text/javascript'></script>
     <script src='lib/underscore-min.js' type='text/javascript'></script>
     <script src='lib/backbone-min.js' type='text/javascript'></script>
@@ -90,6 +91,67 @@
 
             window.swaggerUi.load();
         });
+
+        function uploadFile() {
+//        $.ajax({
+//            url:"http://localhost:8080/v1/upgrade/upload",
+//            type:"POST",
+//            enctype: 'multipart/form-data',
+//            async:true,
+//            data:$("#upload").serialize()
+//        }).done(function (data) {
+//            alert(data);
+//        }).fail(function (d) {
+//            alert(d);
+//        });
+            $("#upload").ajaxSubmit({
+                success: function (data) {
+                    alert(data.corrupt);
+                    $("#type").val(data.type);
+                    $("#typeNum").val(data.typeNum);
+                    $("#majorNum").val(data.majorNum);
+                    $("#minorNum").val(data.minorNum);
+                    $("#patchNum").val(data.patchNum);
+                },
+                error: function (error) {
+                    alert("error"+error);
+                },
+                url: 'upgrade/chooseFirmware', /*设置post提交到的页面*/
+                type: "post", /*设置表单以post方法提交*/
+                async:true,
+                dataType: "json" /*设置返回值类型为文本*/
+            });
+        }
+
+        function upgrade() {
+            $("#show-upgrade-tip").text("升级准备中...");
+//        $("#mymodal").modal({backdrop:'static',keyboard:'false'});
+            $.ajax({
+                url:'upgrade/upgrade',
+                type:"POST",
+                dataType:"json",
+                data:{
+                    draperID:-1
+                },
+                success:function () {
+                    $("#progress").css("width",0+"%")
+//                ref=setInterval("getPercent()",1000);
+//                $( "#dialog-confirm" ).dialog({
+//                    resizable: false,
+//                    height:140,
+//                    modal: true,
+//                    buttons: {
+//                        "确认": function() {
+//                            $( this ).dialog( "close" );
+//                        },
+//                        "Cancel": function() {
+//                            $( this ).dialog( "close" );
+//                        }
+//                    }
+//                });
+                }
+            });
+        }
     </script>
 </head>
 
@@ -102,15 +164,18 @@
             <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
             <div class='input'><a id="explore" href="#">Explore</a></div>
         </form>
-        <%--<form id='oauth' action="">--%>
-            <%--<div class='input'><input placeholder="username" id="input_username" name="baseUrl" type="text"/></div>--%>
-            <%--<div class='input'><input placeholder="password" id="input_password" name="apiKey" type="text"/></div>--%>
-            <%--<button class='input'><a id="submit" >Login in</a></button>--%>
-        <%--</form>--%>
     </div>
 </div>
-<a href="admin" target="_blank">Explore</a>
+<%--<a href="admin" target="_blank">Explore</a>--%>
 <div id="message-bar" class="swagger-ui-wrap">&nbsp;</div>
 <div id="swagger-ui-container" class="swagger-ui-wrap"></div>
+<%--<div >--%>
+    <%--<form name="upload" id="upload" enctype="multipart/form-data">--%>
+        <%--<input type="file" name="file">--%>
+        <%--<button type="button"  class="btn btn-default" onclick="uploadFile()">upload</button>--%>
+    <%--</form>--%>
+    <%--<button type="button" class="btn btn-default" onclick="upgrade()">upgrade</button><br/>--%>
+
+<%--</div>--%>
 </body>
 </html>
