@@ -3,6 +3,7 @@ package manager.rmi;
 
 
 import model.FirmWareInformation;
+import model.FirmWareResult;
 
 import java.io.File;
 import java.rmi.Remote;
@@ -16,14 +17,7 @@ public interface IUpgrade extends Remote {
      * @return
      * @throws RemoteException
      */
-    public List<FirmWareInformation> chooseFirmware(String path) throws RemoteException;
-
-    /**
-     * 远程接口方法必须抛出* java.rmi.RemoteException
-     * @return
-     * @throws RemoteException
-     */
-    public List<FirmWareInformation> chooseFirmware(File file) throws RemoteException;
+    public FirmWareResult chooseFirmware(String path) throws RemoteException;
 
     /**
      *

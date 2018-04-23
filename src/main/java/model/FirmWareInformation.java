@@ -9,10 +9,13 @@ public class FirmWareInformation implements Serializable{
 
     private String type;
     private int typeNum;
-    private String lastModify;
     private int majorNum;
     private int minorNum;
     private int patchNum;
+    private int crc;
+
+    public FirmWareInformation() {
+    }
 
     public String getType() {
         return type;
@@ -28,14 +31,6 @@ public class FirmWareInformation implements Serializable{
 
     public void setTypeNum(int typeNum) {
         this.typeNum = typeNum;
-    }
-
-    public String getLastModify() {
-        return lastModify;
-    }
-
-    public void setLastModify(String lastModify) {
-        this.lastModify = lastModify;
     }
 
     public int getMajorNum() {
@@ -60,5 +55,13 @@ public class FirmWareInformation implements Serializable{
 
     public void setPatchNum(int patchNum) {
         this.patchNum = patchNum;
+    }
+
+    public int getCrc() {
+        return crc;
+    }
+
+    public void setCrc(int crc) {
+        this.crc = crc;
     }
 }

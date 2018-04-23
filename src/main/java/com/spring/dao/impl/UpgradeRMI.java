@@ -3,6 +3,7 @@ package com.spring.dao.impl;
 import manager.rmi.IUpgrade;
 import manager.rmi.IUpgradeCallback;
 import model.FirmWareInformation;
+import model.FirmWareResult;
 
 import java.io.File;
 import java.rmi.RemoteException;
@@ -17,13 +18,9 @@ public class UpgradeRMI extends Rmi<IUpgrade> implements IUpgrade {
 
 
     @Override
-    public List<FirmWareInformation> chooseFirmware(String path) throws RemoteException {
-        return getRmi().chooseFirmware(path);
-    }
-
-    @Override
-    public List<FirmWareInformation> chooseFirmware(File file) throws RemoteException {
-        return null;
+    public FirmWareResult chooseFirmware(String path) throws RemoteException {
+        FirmWareResult firmWareResult = getRmi().chooseFirmware(path);
+        return firmWareResult;
     }
 
     @Override

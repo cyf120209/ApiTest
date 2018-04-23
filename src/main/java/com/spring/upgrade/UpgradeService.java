@@ -4,6 +4,7 @@ import com.spring.dao.impl.UpgradeRMI;
 import com.spring.socket.SpringWebSocketHandler;
 import manager.rmi.IUpgradeCallback;
 import model.FirmWareInformation;
+import model.FirmWareResult;
 import org.springframework.stereotype.Service;
 
 import java.rmi.RemoteException;
@@ -20,10 +21,9 @@ public class UpgradeService {
         handler = new SpringWebSocketHandler();
     }
 
-    public List<FirmWareInformation> chooseFirmware(String path)  {
+    public FirmWareResult chooseFirmware(String path)  {
         try {
-            List<FirmWareInformation> firmWareInformations = upgradeRMI.chooseFirmware(path);
-            return firmWareInformations;
+            return upgradeRMI.chooseFirmware(path);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
