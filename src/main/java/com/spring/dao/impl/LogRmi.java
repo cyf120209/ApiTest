@@ -1,0 +1,100 @@
+package com.spring.dao.impl;
+
+import com.spring.dao.ILogDao;
+import com.spring.utils.Entity2BeanUtils;
+import entity.Log;
+import manager.rmi.ILog;
+
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by lenovo on 2017/5/15.
+ */
+public class LogRmi extends Rmi<ILog> implements ILogDao {
+
+    @Override
+    String getRmiName() {
+        return "log";
+    }
+
+    @Override
+    public Log queryById(Integer id) {
+//        try {
+//            entity.ShadeGroup group = GroupRmi.group.getByGroupId(id);
+//            return Entity2BeanUtils.entity2bean(group);
+//        } catch (RemoteException e) {
+//            e.printStackTrace();
+//        }
+        return null;
+    }
+
+    @Override
+    public List<Log> queryAll(){
+        List<Log> logList=new ArrayList<>();
+        try {
+            List<Log> list = getRmi().getLogList();
+            logList.addAll(list);
+        } catch (RemoteException e) {
+            resetRmi();
+            e.printStackTrace();
+        }
+        return logList;
+    }
+
+//    private SessionFactory session;
+//
+//    public SessionFactory getSession() {
+//        return session;
+//    }
+
+//    public void setSession(SessionFactory session) {
+//        this.session = session;
+//    }
+
+//    public List<ShadeGroup> getGroupList(){
+//        StringBuffer buffer=new StringBuffer(1024);
+//        buffer.append("from shadegroup");
+//        Session session1 = session.openSession();
+//        Query query = session1.createQuery(buffer.toString());
+//        List list = query.list();
+//        return list;
+//    }
+
+//    public List<Shade> getGroup(Integer groupId){
+//        StringBuffer buffer=new StringBuffer(1024);
+//        buffer.append("select s.id,s.shadeId,s.shadeName,s.shadePosition,s.shadePriority,s.shadeStatus ");
+//        buffer.append("from shadeGroupRelation sgr,shade s where shadeGroupId="+groupId+" and sgr.shadeId=s.shadeId");
+//        Session session1 = session.openSession();
+//        Query query = session1.createQuery(buffer.toString());
+//        List<Object[]> list = query.list();
+//        List<Shade> shadeList=new ArrayList<>();
+//        for (Object[] o:list){
+//            shadeList.add(new Shade((Integer) o[1],(String) o[2],(Integer) o[3],(Integer) o[4],(String) o[5]));
+//        }
+//        return shadeList;
+//    }
+//
+//    public Map<Integer,List<Shade>> getGroupShadeMap(){
+//        StringBuffer buffer=new StringBuffer(1024);
+//        buffer.append("select sgr.shadeGroupId,s.id,s.shadeId,s.shadeName,s.shadePosition,s.shadePriority,s.shadeStatus ");
+//        buffer.append("from shadeGroupRelation sgr,shade s where sgr.shadeId=s.shadeId");
+//        Session session1 = session.openSession();
+//        Query query = session1.createQuery(buffer.toString());
+//        List<Object[]> list = query.list();
+//        Map<Integer,List<Shade>> groupShadeMap=new HashMap<>();
+//        for (Object[] o:list){
+//            Integer id = (Integer) o[0];
+//            List<Shade> shadeList = groupShadeMap.get(id);
+//            if(shadeList==null){
+//                shadeList=new ArrayList<>();
+//                shadeList.add(new Shade((Integer) o[2],(String) o[3],(Integer) o[4],(Integer) o[5],(String) o[6]));
+//            }else {
+//                shadeList.add(new Shade((Integer) o[2],(String) o[3],(Integer) o[4],(Integer) o[5],(String) o[6]));
+//            }
+//            groupShadeMap.put(id,shadeList);
+//        }
+//        return groupShadeMap;
+//    }
+}

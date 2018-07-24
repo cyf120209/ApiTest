@@ -19,4 +19,8 @@
     <bean id="shadeService" class="com.spring.service.impl.ShadeServiceImpl">
 
     </bean>
+
+    <bean id="logService" class="com.spring.service.impl.LogServiceImpl">
+
+    </bean>
 </beans>
