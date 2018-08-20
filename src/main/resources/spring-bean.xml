@@ -6,9 +6,9 @@
     <!--<bean id="initService" class="com.spring.service.InitService">-->
     <!--</bean>-->
 
-    <bean id="groupRmi" class="com.spring.dao.impl.GroupRmi">
+    <!--<bean id="groupRmi" class="com.spring.dao.impl.GroupRmi">-->
 
-    </bean>
+    <!--</bean>-->
     <bean id="groupService" class="com.spring.service.impl.GroupServiceImpl">
 
     </bean>
@@ -21,6 +21,10 @@
     </bean>
 
     <bean id="logService" class="com.spring.service.impl.LogServiceImpl">
+
+    </bean>
+
+    <bean id="deviceService" class="com.spring.service.impl.DeviceServiceImpl">
 
     </bean>
 </beans>

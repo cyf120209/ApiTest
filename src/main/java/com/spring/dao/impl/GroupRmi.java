@@ -48,7 +48,18 @@ public class GroupRmi extends Rmi<IGroup> implements IGroupDao {
         return groupList;
     }
 
-//    private SessionFactory session;
+    @Override
+    public Boolean groupSubscriptionToSelect(Integer id, Boolean remove, Integer deviceId, Integer groupId) {
+        try {
+            return getRmi().groupSubscriptionToSelect(id, remove, deviceId, groupId);
+        } catch (RemoteException e) {
+            resetRmi();
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //    private SessionFactory session;
 //
 //    public SessionFactory getSession() {
 //        return session;

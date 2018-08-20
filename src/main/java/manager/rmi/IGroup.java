@@ -1,7 +1,5 @@
 package manager.rmi;
 
-
-
 import entity.ShadeGroup;
 
 import java.rmi.Remote;
@@ -13,5 +11,7 @@ public interface IGroup extends Remote{
     List<ShadeGroup> getGroupList() throws RemoteException;
 
     ShadeGroup getByGroupId(int id) throws RemoteException;
+
+    Boolean groupSubscriptionToSelect(Integer id, Boolean remove, Integer deviceId, Integer groupId) throws RemoteException;
 
 }

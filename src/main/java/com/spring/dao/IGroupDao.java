@@ -2,7 +2,6 @@ package com.spring.dao;
 
 import com.spring.bean.ShadeGroup;
 
-import java.rmi.RemoteException;
 import java.util.List;
 
 public interface IGroupDao {
@@ -19,4 +18,7 @@ public interface IGroupDao {
      * @return
      */
     List<ShadeGroup> queryAll();
+
+    Boolean groupSubscriptionToSelect(Integer id, Boolean remove, Integer deviceId, Integer groupId);
+
 }

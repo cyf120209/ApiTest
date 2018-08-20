@@ -3,6 +3,7 @@ package com.spring.controller;
 import com.spring.bean.Shade;
 import com.spring.bean.ShadeGroup;
 import com.spring.service.IShadeService;
+import entity.DraperInformation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -37,21 +38,6 @@ public class ShadesApi {
         return shadeList;
     }
 
-    @ApiOperation(value = "Moves shades", notes = "Moves shades", httpMethod = "POST", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    @RequestMapping(value = "/move", method = RequestMethod.POST, produces = {"application/json;charset=UTF-8"})
-    public List<Shade> move(@ApiParam(value = "ids to filter by",allowMultiple=true) @RequestParam(required = false) Integer[] id,
-                        @ApiParam(value = "names to filter by",allowMultiple=true) @RequestParam(required = false) String[] name,
-                        @ApiParam(value = "group id to filter by",allowMultiple=true) @RequestParam(required = false) Integer[] groupId,
-                        @ApiParam(value = "group name to filter by",allowMultiple=true) @RequestParam(required = false) String[] groupName,
-                        @ApiParam(value = "position to move the shades to in meters") @RequestParam(required = false) Integer position,
-                        @ApiParam(value = "position to move the shades to as a percentage") @RequestParam(required = false) Integer percentage,
-                        @ApiParam(value = "command to send to the shade. Commands include move full open, closed and stop.") @RequestParam(required = false) Integer command,
-                        @ApiParam(value = "priority that the shade will be moved at") @RequestParam(required = true) Integer priority) {
-        List<Shade> shadeList = iShadeService.getMoveList(id,name,groupId,groupName,position,percentage,command,priority);
-        return shadeList;
-    }
-
     @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @RequestMapping(value = "/groups",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})
@@ -61,14 +47,47 @@ public class ShadesApi {
         return shadeGroupList;
     }
 
-//    @ApiOperation(value = "get shadeInfo", notes = "get shadeInfo", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    @RequestMapping(value = "/{shadeId}", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
-//    public Shade getShadeInfo(@PathVariable Integer shadeId) {
-////        shadesService.setIShadeDao(new ShadeReal());id
-////        List<Shade> shadeList = shadesService.getShadeList();
-//        Shade shade = iShadeService.getById(shadeId);
-//        return shade;
-//    }
+    @ApiOperation(value = "identify", notes = "identify", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "/identify/{id}", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public void identify(@PathVariable Integer id) {
+        iShadeService.identify(id);
+    }
+
+    @ApiOperation(value = "move shade", notes = "move shade", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "/move/{id}/{cmd}", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public void move(@PathVariable Integer id,
+                     @PathVariable Integer cmd,
+                     @ApiParam(value = "cmdService") @RequestParam(required = false) Integer cmdService ){
+        if(cmdService==null || cmdService.intValue()==0){
+            iShadeService.move(id,cmd);
+        }else {
+            iShadeService.move(id,cmd,cmdService);
+        }
+    }
+
+    @ApiOperation(value = "limitAndStopOperation", notes = "limitAndStopOperation", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "/limitAndStopOperation/{id}/{cmd}", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public DraperInformation limitAndStopOperation(@PathVariable Integer id,
+                                                   @PathVariable Integer cmd,
+                                                   @ApiParam(value = "cmdService") @RequestParam(required = false) Integer cmdService ) {
+        DraperInformation draperInformation=null;
+        if(cmdService==null || cmdService.intValue()==0){
+            draperInformation = iShadeService.limitAndStopOperation(id, cmd);
+        }else {
+            draperInformation = iShadeService.limitAndStopOperation(id, cmd,cmdService);
+        }
+        return draperInformation;
+    }
+
+    @ApiOperation(value = "getDraperInformation", notes = "getDraperInformation", httpMethod = "GET", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "/draperInformation/{id}", method = RequestMethod.GET, produces = {"application/json;charset=UTF-8"})
+    public DraperInformation getDraperInformation(@PathVariable Integer id) {
+        DraperInformation draperInformation = iShadeService.getDraperInformation(id);
+        return draperInformation;
+    }
 
 }

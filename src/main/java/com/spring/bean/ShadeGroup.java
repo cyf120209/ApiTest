@@ -5,6 +5,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -25,6 +27,9 @@ public class ShadeGroup implements Serializable{
     @ApiModelProperty(value = "groupName")
     private String groupName;
 
+    @ApiModelProperty(value = "shades")
+    private List<Shade> shades=new ArrayList<>();
+
     public ShadeGroup() {
     }
 
@@ -33,6 +38,14 @@ public class ShadeGroup implements Serializable{
         this.groupId = groupId;
         this.deviceId = deviceId;
         this.groupName = groupName;
+    }
+
+    public ShadeGroup(Integer id, Integer groupId, Integer deviceId, String groupName,List<Shade> shades) {
+        this.id = id;
+        this.groupId = groupId;
+        this.deviceId = deviceId;
+        this.groupName = groupName;
+        this.shades=shades;
     }
 
     public Integer getGroupId() {
@@ -65,5 +78,13 @@ public class ShadeGroup implements Serializable{
 
     public void setGroupName(String groupName) {
         this.groupName = groupName;
+    }
+
+    public List<Shade> getShades() {
+        return shades;
+    }
+
+    public void setShades(List<Shade> shades) {
+        this.shades = shades;
     }
 }

@@ -36,6 +36,16 @@ public class groupsApi {
         return groupService.getShadeGroupList(id,name);
     }
 
+    @ApiOperation(value = "groups",notes = "subscription groups",httpMethod = "POST",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    @RequestMapping(value = "/subscription",method = RequestMethod.POST,produces ={"application/json;charset=UTF-8"})
+    public Boolean groupSubscriptionToSelect(@ApiParam(value = "id", required = true) @RequestParam Integer id,
+                                             @ApiParam(value = "remove", required = true) @RequestParam Boolean remove,
+                                             @ApiParam(value = "deviceId", required = true) @RequestParam Integer deviceId,
+                                             @ApiParam(value = "groupId", required = true) @RequestParam Integer groupId) {
+        return groupService.groupSubscriptionToSelect(id, remove, deviceId, groupId);
+    }
+
 //    @ApiOperation(value = "group",notes = "group",httpMethod = "GET",produces = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
 //    @RequestMapping(value = "/{id}",method = RequestMethod.GET,produces ={"application/json;charset=UTF-8"})

@@ -1,6 +1,7 @@
 package com.spring.dao;
 
 import com.spring.bean.Shade;
+import entity.DraperInformation;
 
 import java.util.List;
 
@@ -25,4 +26,15 @@ public interface IShadeDao {
     List<Shade> queryAll();
 //    List<Shade> queryAll(@Param("offset") int offset, @Param("limit") int limit);
 
+    void identify(Integer id);
+
+    void move(Integer id, Integer cmd);
+
+    void move(Integer id,Integer cmd,Integer cmdService);
+
+    DraperInformation limitAndStopOperation(Integer id, Integer cmd);
+
+    DraperInformation limitAndStopOperation(Integer id, Integer cmd,Integer cmdService);
+
+    DraperInformation getDraperInformation(Integer id);
 }

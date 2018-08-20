@@ -5,6 +5,7 @@ import com.spring.bean.ShadeGroup;
 import com.spring.dao.IShadeDao;
 import com.spring.dao.impl.ShadeRmi;
 import com.spring.service.IShadeService;
+import entity.DraperInformation;
 import org.springframework.stereotype.Service;
 import rx.Observable;
 import rx.functions.Action1;
@@ -146,6 +147,36 @@ public class ShadeServiceImpl implements IShadeService {
     public List<ShadeGroup> getShadeGroupList(Integer[] id, String[] name) {
         shadeDao.queryAll();
         return null;
+    }
+
+    @Override
+    public void identify(Integer id) {
+        shadeDao.identify(id);
+    }
+
+    @Override
+    public void move(Integer id, Integer cmd) {
+        move(id, cmd,1);
+    }
+
+    @Override
+    public void move(Integer id, Integer cmd, Integer cmdService) {
+        shadeDao.move(id, cmd,cmdService);
+    }
+
+    @Override
+    public DraperInformation limitAndStopOperation(Integer id, Integer cmd) {
+        return shadeDao.limitAndStopOperation(id, cmd);
+    }
+
+    @Override
+    public DraperInformation limitAndStopOperation(Integer id, Integer cmd, Integer cmdService) {
+        return shadeDao.limitAndStopOperation(id, cmd,cmdService);
+    }
+
+    @Override
+    public DraperInformation getDraperInformation(Integer id) {
+        return shadeDao.getDraperInformation(id);
     }
 
     private Boolean getShadeById(Integer shadeId, Integer[] id) {

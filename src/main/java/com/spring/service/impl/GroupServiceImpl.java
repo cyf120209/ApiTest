@@ -72,6 +72,11 @@ public class GroupServiceImpl implements IGroupService {
         return groupList;
     }
 
+    @Override
+    public Boolean groupSubscriptionToSelect(Integer id, Boolean remove, Integer deviceId, Integer groupId) {
+        return groupDao.groupSubscriptionToSelect(id, remove, deviceId, groupId);
+    }
+
     /**
      * 组的基本操作
      *
@@ -80,44 +85,6 @@ public class GroupServiceImpl implements IGroupService {
     public void operation(GroupEntity groupEntity) {
     }
 
-
-    /**
-     * 添加组
-     *
-     * @param groupID 组ID
-     */
-    public void add(int deviceID, int groupID, AddGroupEntity entity) {
-    }
-
-    /**
-     * 更新组
-     *
-     * @param groupID   组ID
-     * @param groupName 组名称
-     */
-    public void update(int groupID, String groupName) {
-        //TODO
-
-    }
-
-    /**
-     * 删除设备下的某个组
-     *
-     * @param deviceID 设备ID
-     * @param groupID  组ID
-     */
-    public void delete(int deviceID, int groupID) {
-    }
-
-    /**
-     * 删除组下面的某个电机
-     *
-     * @param deviceID 设备ID
-     * @param groupID  组ID
-     * @param draperID 电机ID
-     */
-    public void delete(int deviceID, int groupID, int draperID) {
-    }
 
     private Boolean getShadeGroupById(Integer groupId, Integer[] id) {
         for (Integer i : id) {

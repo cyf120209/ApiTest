@@ -25,7 +25,13 @@ public class Entity2BeanUtils {
     public static List<ShadeGroup> entity2beanGroup(List<entity.ShadeGroup> lists){
         List<ShadeGroup> groupList=new ArrayList<>();
         for (entity.ShadeGroup list:lists) {
-            groupList.add(new ShadeGroup(list.getId(),list.getGroupId(),list.getDeviceId(),list.getGroupName()));
+            List<Shade> shades=new ArrayList<>();
+            if(list.getShades()!=null && list.getShades().size()>0){
+                for(entity.Shade shade:list.getShades()){
+                    shades.add(new Shade(shade.getShadeId(),shade.getShadeName(),shade.getShadePosition(),shade.getShadePriority(),shade.getShadeStatus()));
+                }
+            }
+            groupList.add(new ShadeGroup(list.getId(),list.getGroupId(),list.getDeviceId(),list.getGroupName(),shades));
         }
         return groupList;
     }
@@ -44,5 +50,9 @@ public class Entity2BeanUtils {
 
     public static Device entity2bean(entity.Device device){
         return new Device(device.getId(),device.getDeviceId(),device.getDeviceName(),device.getMac(),device.getModelName(),device.getVersion(),device.getRemarks());
+    }
+
+    public static entity.Device bean2entity(Device device){
+        return new entity.Device(device.getDeviceId(),device.getDeviceName(),device.getMac(),device.getModelName(),device.getVersion(),device.getRemarks());
     }
 }
